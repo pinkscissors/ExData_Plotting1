@@ -33,7 +33,10 @@ with(mydata, plot(dmy(Date)+hms(Time),  Sub_metering_1,
 with(mydata, lines(dmy(Date)+hms(Time),  Sub_metering_2, col="Red"))
 with(mydata, lines(dmy(Date)+hms(Time),  Sub_metering_3, col="Blue"))
 legend("topright", lty="solid", col= c("black", "red", "blue"), legend =
-         c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+      c("Sub_metering_1   ","Sub_metering_2   ","Sub_metering_3   "),
+      cex=0.80)
+### Legend text had 3 spaces added to avoid disappearance to right edge in
+###  png file rendering
 ### 3.copy plot1 to png file
 dev.copy(png, file = "plot3.png")
 dev.off()

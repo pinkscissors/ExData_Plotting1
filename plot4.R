@@ -31,12 +31,13 @@ as.numeric(mydata$Global_reactive_power)
 as.numeric(mydata$Voltage)
 
 ### 2.set graphical parameter in par to make a 2 X 2 matrix of 4 plots
+### and reduce label and axis text sizes slightly
 par(mfrow = c(2,2), cex.lab=0.75, cex.axis=0.75)
 
 ### 3.plot the 4 plots
 with(mydata, {
   plot(dmy(Date)+hms(Time),  Global_active_power,
-          type="l", ylab="Global Active Power", xlab="")
+     type="l", ylab="Global Active Power", xlab="")
   plot(dmy(Date)+hms(Time), Voltage, type="l",xlab="datetime")
 })
 with(mydata, plot(dmy(Date)+hms(Time),  Sub_metering_1,
@@ -44,10 +45,12 @@ with(mydata, plot(dmy(Date)+hms(Time),  Sub_metering_1,
 with(mydata, lines(dmy(Date)+hms(Time),  Sub_metering_2, col="Red"))
 with(mydata, lines(dmy(Date)+hms(Time),  Sub_metering_3, col="Blue"))
 legend("topright", lty="solid", col= c("black", "red", "blue"), bty="n",
-       legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
-       cex=0.75)
+    legend = c("Sub_metering_1   ","Sub_metering_2   ","Sub_metering_3   "),
+    cex=0.7)
+### Legend text had 3 spaces added to avoid disappearance to right edge in
+###  png file rendering
 with(mydata, plot(dmy(Date)+hms(Time),  Global_reactive_power,
-      type="l", ylab="Global_reactive_power",  xlab="datetime"))
+    type="l", ylab="Global_reactive_power",  xlab="datetime"))
 ### 3.copy plot1 to png file
 dev.copy(png, file = "plot4.png")
 dev.off()
